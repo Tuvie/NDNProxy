@@ -1,0 +1,11 @@
+The MapServer Project - Copyright 2014 Netarch Lab in Tsinghua University, and is licensed under the
+Apache License version 2.0 as published by the Apache Software Foundation.
+
+A summary of the individual contributors is given below. 
+
+Name
+-------------------------------------------------------------------------------
+Zhaogeng Li
+Zhongru Wu
+-------------------------------------------------------------------------------
+

@@ -1,0 +1,135 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.ndnMapServer</groupId>
+  <artifactId>ndnMapServer</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>ndnMapServer</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+    	<groupId>org.bouncycastle</groupId>
+    	<artifactId>bcprov-jdk15</artifactId>
+    	<version>1.40</version>
+    </dependency>
+    <dependency>
+    	<groupId>io.netty</groupId>
+    	<artifactId>netty-all</artifactId>
+    	<version>4.0.13.Final</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.ndnx.ndn</groupId>
+    	<artifactId>project-ndnx-javalib</artifactId>
+    	<version>0.7.4</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.apache.maven.plugins</groupId>
+    	<artifactId>maven-compiler-plugin</artifactId>
+    	<version>3.1</version>
+    	<type>maven-plugin</type>
+    </dependency>
+    <dependency>
+    	<groupId>org.apache.maven.plugins</groupId>
+    	<artifactId>maven-shade-plugin</artifactId>
+    	<version>2.3</version>
+    	<type>maven-plugin</type>
+    </dependency>
+    <dependency>
+    	<groupId>org.slf4j</groupId>
+    	<artifactId>slf4j-api</artifactId>
+    	<version>1.7.2</version>
+    </dependency>
+    <dependency>
+    	<groupId>org.slf4j</groupId>
+    	<artifactId>slf4j-log4j12</artifactId>
+    	<version>1.7.2</version>
+    </dependency>
+  </dependencies>
+  
+  <build>
+  	<plugins>
+  	  <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <shadedArtifactAttached>true</shadedArtifactAttached>
+              <shadedClassifierName>mapserver-shade</shadedClassifierName>
+              <artifactSet>
+                <excludes>
+                  <exclude>org.bouncycastle:*</exclude>
+                </excludes>
+              </artifactSet>
+
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/*.SF</exclude>
+                    <exclude>META-INF/*.DSA</exclude>
+                    <exclude>META-INF/*.RSA</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <manifestEntries>
+                    <Main-Class>org.ndnMapServer.ndnMapServer.MapServer</Main-Class>
+                    <Class-Path>. ./bcprov-jdk16-1.46.jar</Class-Path>
+                  </manifestEntries>
+                </transformer>
+              </transformers>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+          <encoding>UTF-8</encoding>
+          <!-- The following force compilation with full warnings. -->
+          <!--
+            <fork>true</fork>
+            <showWarnings>true</showWarnings>
+            <showDeprecation>true</showDeprecation>
+            <compilerArguments><Xlint /></compilerArguments>
+          -->
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  
+  <repositories>
+      <repository>
+      <id>in-project</id>
+      <name>in project repo</name>
+      <url>file://${project.basedir}/lib</url>
+    </repository>
+  </repositories>
+</project>

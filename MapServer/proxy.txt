@@ -1,0 +1,2 @@
+www.youku.com,NDNEGW_ID
+#www.sina.com.cn,NDNEGW_ID
