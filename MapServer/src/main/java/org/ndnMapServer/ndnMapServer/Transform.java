@@ -35,7 +35,18 @@ public class Transform {
 				if(server.proxyList.size() == 0){
 					return "";
 				}
-				if((str = server.proxyMap.get(key)) == null){
+				String suffix = key;
+				str = null;
+				str = server.proxyMap.get(key);
+				while(str == null){
+					if(suffix.indexOf('.') > 0){
+						suffix = suffix.substring(suffix.indexOf('.') + 1);
+					}else{
+						break;
+					}
+					str = server.proxyMap.get(suffix);
+				}
+				if(str == null){
 					String proxy_id = null;
 					proxy_id = server.proxyList.get(Math.abs(key.hashCode() % server.proxyList.size()));
 					str = proxy_id;
