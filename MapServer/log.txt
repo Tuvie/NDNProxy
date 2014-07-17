@@ -1,0 +1,26 @@
+0      2014-07-17 11:44:03,168 INFO  [main] ndnMapServer.MapServer (?:?).?() - Map Server started.
+9040   2014-07-17 11:44:12,208 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/www.baidu.com->NDNEGW_ID
+9055   2014-07-17 11:44:12,223 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: en/Agent::Mozilla/5.0 (X11; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0->752ee00cfac6c6bf
+9060   2014-07-17 11:44:12,228 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: en/Language::en-US,en;q=0.5->a142820b255ada2d
+9064   2014-07-17 11:44:12,232 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: en/Encoding::gzip, deflate->0e659b62facc9f74
+9104   2014-07-17 11:44:12,272 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: de/752ee00cfac6c6bf->Agent::Mozilla/5.0 (X11; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0
+9108   2014-07-17 11:44:12,276 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: de/a142820b255ada2d->Language::en-US,en;q=0.5
+9111   2014-07-17 11:44:12,279 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: de/0e659b62facc9f74->Encoding::gzip, deflate
+9543   2014-07-17 11:44:12,711 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/su.bdimg.com->NDNEGW_ID
+9925   2014-07-17 11:44:13,093 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/suggestion.baidu.com->NDNEGW_ID
+9932   2014-07-17 11:44:13,100 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/s1.bdstatic.com->NDNEGW_ID
+10063  2014-07-17 11:44:13,231 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/i.baidu.com->NDNEGW_ID
+80171  2014-07-17 11:45:23,339 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/www.youku.com->NDNEGW_ID
+80272  2014-07-17 11:45:23,440 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/static.youku.com->NDNEGW_ID
+80753  2014-07-17 11:45:23,921 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/r3.ykimg.com->NDNEGW_ID
+80756  2014-07-17 11:45:23,924 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/r2.ykimg.com->NDNEGW_ID
+80763  2014-07-17 11:45:23,931 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/g2.ykimg.com->NDNEGW_ID
+80765  2014-07-17 11:45:23,933 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/g3.ykimg.com->NDNEGW_ID
+80768  2014-07-17 11:45:23,936 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/r1.ykimg.com->NDNEGW_ID
+80770  2014-07-17 11:45:23,938 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/r4.ykimg.com->NDNEGW_ID
+80774  2014-07-17 11:45:23,942 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/g4.ykimg.com->NDNEGW_ID
+80778  2014-07-17 11:45:23,946 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/g1.ykimg.com->NDNEGW_ID
+81597  2014-07-17 11:45:24,765 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/b.scorecardresearch.com->NDNEGW_ID
+81966  2014-07-17 11:45:25,134 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/translate.google.com->NDNEGW_ID
+83022  2014-07-17 11:45:26,190 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/nc.youku.com->NDNEGW_ID
+83088  2014-07-17 11:45:26,256 INFO  [NDNNetworkManager 3] ndnMapServer.MapServer (?:?).?() - Map: px/p.l.youku.com->NDNEGW_ID

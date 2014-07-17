@@ -19,16 +19,53 @@ public class TransUtils {
 	public static HttpRequest tranInterest(ContentName name, PseudoToAutonym pta, boolean alone) throws MalformedContentNameStringException, ConfigurationException, URISyntaxException{
 		ContentName pseudo= new ContentName();
 		String url = new String(name.component(2));
+		int count = name.count() - 1;
+		int cookielocate = 0;
+		boolean cookie = false;
 		int end = url.indexOf("/", 7);
 		String host = url.substring(7, end);
-		HttpRequest request = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, url);
+		
+		//new		
+		HttpRequest request;
+		if(new String(name.component(name.count()-2)).equals("POST")){	
+			request = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.POST, url);
+			count = count - 1;
+		}else{
+			request = new DefaultHttpRequest(HttpVersion.HTTP_1_1, HttpMethod.GET, url);
+		}
+		
 		try{
 			request.headers().set("Host", host);
 		}catch(Exception e){
 			return null;
 		}
 
-		for(int i = 3; i < name.count() - 1; i++){
+		//new 
+		//detect cookie 		
+		if(new String(name.component(count-1)).contains("Cookie")){
+			count = count - 1;
+			cookie = true;
+			cookielocate = count;
+		}else{
+			cookie = false;
+		}
+		
+		//new
+		//detect If-None-Match
+		if(new String(name.component(count-1)).contains("Matchs")){	
+			count = count - 1;
+			request.headers().set("If-None-Match", new String(name.component(count)).replace("\\\\", "\"").substring(7));
+		}
+		
+		//new
+		//detect If-Modified-Since
+		if(new String(name.component(count-1)).contains("Modify")){
+			count = count - 1;
+			request.headers().set("If-Modified-Since", new String(name.component(count)).substring(7));
+		}
+		
+		for(int i = 3; i < count ; i++){
+			
 		    if(!(new String(name.component(i)).contains("::"))) {
 		    	if(!alone){
 		    		pseudo = pta.getAutonym(new ContentName(name.component(i)));
@@ -42,7 +79,7 @@ public class TransUtils {
 		    }else{
 		    	pseudo = new ContentName(name.component(i));
 		    }
-				
+		    
 			String[] field = new String(pseudo.component(0)).split("::");
 			if(field[0].equals("Agent")){
 				request.headers().set("User-Agent", field[1]);
@@ -57,6 +94,12 @@ public class TransUtils {
 			}
 		}
 		
+		//new
+		//add cookie into request packet
+		if(cookie == true){
+			String cookieString = new String(name.component(cookielocate));
+			request.headers().set("Cookie", cookieString.substring(7));
+		}
 		return request;
 	}
 	

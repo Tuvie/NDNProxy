@@ -22,22 +22,30 @@ import io.netty.handler.codec.http.HttpVersion;
 
 public class TransUtils {
 	
-	public static boolean needTran(HttpRequest request){
-		if(request.getMethod() != HttpMethod.GET){
-			return false;
+	public static boolean needTran(HttpRequest request){		
+		if(request.getMethod() != HttpMethod.GET ){
+//			if( request.getMethod() != HttpMethod.POST){
+				return false;
+//			}
 		}
-		HttpHeaders headers = request.headers();
-		Iterator<Entry<String, String>> iterator = headers.iterator();
-		while(iterator.hasNext()){
-			Entry<String, String> headerField = iterator.next();
-			if (headerField.getKey().indexOf("Cookie") == 0) {
-				return false;
-			}else if (headerField.getKey().indexOf("If-None_Match") == 0){
-				return false;
-			}else if (headerField.getKey().indexOf("If-Modified-Since") == 0){
-				return false;
-			}
-		}
+		
+//		if(request.getMethod() != HttpMethod.GET){
+//			return false;
+//		}
+//		HttpHeaders headers = request.headers();
+//		Iterator<Entry<String, String>> iterator = headers.iterator();
+//		while(iterator.hasNext()){
+//			
+//			Entry<String, String> headerField = iterator.next();
+//			if (headerField.getKey().indexOf("Cookie") == 0) {
+//				return false;
+//			}else 
+//			if (headerField.getKey().indexOf("If-None_Match") == 0){
+//				return false;
+//			}else if (headerField.getKey().indexOf("If-Modified-Since") == 0){
+//				return false;
+//			}
+//		}
 		return true;
 	}
 	
@@ -45,6 +53,7 @@ public class TransUtils {
 		
 		String[] domain = request.getUri().split("/");
 		ContentName name = null;
+		//if there is no saving in local properties
 		if(!alone){
 			name = atp.getProxy(domain[2], inactive);
 		}
@@ -117,6 +126,28 @@ public class TransUtils {
 			}
 		}
 		
+		//new	
+		valueString = headers.get("If-Modified-Since");
+		if(valueString != null){
+			name = name.append(new ContentName("Modify:" + valueString));
+		}
+		
+		valueString = headers.get("If-None-Match");
+		if(valueString != null){
+			valueString = valueString.replace("\"", "\\\\");
+			name = name.append(new ContentName("Matchs:" + valueString));
+		}
+		
+		valueString = headers.get("Cookie");
+		if(valueString != null){
+			name = name.append(new ContentName("Cookie:" + valueString));
+		}
+		
+//		if(request.getMethod() == HttpMethod.POST){
+//			name = name.append(new ContentName("POST::"));	
+//			name = name.append(new ContentName(request.toString()));
+//		}
+			
 		return name;
 	}
 	

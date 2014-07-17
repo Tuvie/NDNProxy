@@ -1,0 +1,6 @@
+## template:
+## domain name suffix,EGWID
+## for example:
+## sina.com.cn,NDNEGW_ID1
+## youku.com,NDNEGW_ID2
+## note that you don't need to use '*' as wildchar
